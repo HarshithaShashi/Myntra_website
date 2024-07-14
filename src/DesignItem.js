@@ -14,10 +14,10 @@ function DesignItem({ item, addDesign }) {
     <div
       ref={drag}
       className="design-item"
-      style={{ opacity: isDragging ? 0.5 : 1 }}
+      style={{ opacity: isDragging ? 0.2 : 1 }}
       onClick={() => addDesign(item)}
     >
-      <img src={item.src} alt={item.type} style={{ width: '50px', height: '50px' }} />
+      <img src={item.src} alt={item.type} style={{ width: '80px', height: '80px' }} />
     </div>
   );
 }

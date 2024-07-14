@@ -6,15 +6,19 @@ function DesignArea({ designs, setDesigns }) {
   const [, drop] = useDrop(() => ({
     accept: 'designItem',
     drop: (item, monitor) => {
-      const offset = monitor.getClientOffset();
-      const newDesign = { ...item, left: offset.x, top: offset.y };
-      setDesigns([...designs, newDesign]);
+      if (designs.length < 6) { // Ensure no more than 6 designs
+        const offset = monitor.getClientOffset();
+        const newDesign = { ...item, left: offset.x, top: offset.y, id: Date.now() };
+        setDesigns((prevDesigns) => [...prevDesigns, newDesign]);
+      } else {
+        alert('You can only add up to 6 designs.');
+      }
     },
   }));
 
   return (
     <div ref={drop} className="design-area">
-      <p>Make your outfit</p>
+      <p className="design-header">Create Your Fit</p>
       {designs.map((design) => (
         <DesignElement key={design.id} design={design} />
       ))}

@@ -8,6 +8,7 @@ import './App.css';
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [designs, setDesigns] = useState([]);
+  const [history, setHistory] = useState([]); // Stack to keep track of history
 
   const handleSearch = () => {
     console.log('Searching for:', searchQuery);
@@ -22,39 +23,49 @@ function App() {
   };
 
   const addDesign = (item) => {
-    setDesigns([...designs, { ...item, id: Date.now() }]);
+    if (designs.length < 6) { // Check if less than 6 designs
+      setHistory([...history, designs]); // Save current state to history
+      setDesigns([...designs, { ...item, id: Date.now() }]);
+    } else {
+      alert('You can only add up to 6 designs.');
+    }
+  };
+
+  const handleUndo = () => {
+    if (history.length > 0) {
+      const previousState = history[history.length - 1];
+      setHistory(history.slice(0, -1)); // Remove the last state from history
+      setDesigns(previousState);
+    }
   };
 
   const designOptions = [
-    /* eslint-disable no-useless-escape */
-    { type: '2D', src:"C:\Users\Harshitha S.Shankar\OneDrive\Desktop\image1.png" },
-    //{ type: '2D', src: 'path/to/image2.png' },
-   // { type: '2D', src: 'path/to/image3.png' },
-    //{ type: '2D', src: 'path/to/image4.png' },
-    //{ type: '2D', src: 'path/to/image5.png' },
-    /* eslint-enable no-useless-escape */
+    { type: '2D', src: 'images/a1.png' },
+    { type: '2D', src: 'images/a2.png' },
+    { type: '2D', src: 'images/a3.png' },
+    { type: '2D', src: 'images/a4.png' },
   ];
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="App">
         <header>
-          <h1>Design & Drop Logic</h1>
+          <h1>Make your Design</h1>
         </header>
         <main>
           <DesignArea designs={designs} setDesigns={setDesigns} />
           <div className="controls">
-            <button onClick={() => console.log('Back')}>Back</button>
-            <button onClick={() => console.log('Front')}>Front</button>
+            <button className="button button-primary" onClick={handleUndo}>Back</button>
             <input 
               type="text" 
               placeholder="Search bar" 
+              className="button button-primary"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button onClick={handleSearch}>Search</button>
-            <button onClick={handleDownload}>Download</button>
-            <button onClick={handleUpload}>Upload</button>
+            <button className="button button-primary" onClick={handleSearch} >Search</button>
+            <button className="button button-primary" onClick={handleDownload}>Download</button>
+            <button className="button button-primary" onClick={handleUpload}>Upload</button>
           </div>
           <div className="design-options">
             {designOptions.map((item, index) => (
@@ -67,4 +78,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 

@@ -1,19 +1,39 @@
+/* Apply background image to the entire body */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background: url('images/background_image2.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Existing styles */
 .App {
   text-align: center;
+  color:#e09d9d;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .design-area {
-  border: 1px solid rgb(74, 43, 43);
-  height: 400px;
+  border: 5px solid rgb(202, 147, 147);
+  border-radius: 5px;
+  height: 600px;
+  width: 900px;
   margin: 20px;
   position: relative;
+  background-color: rgb(253, 252, 252); /* Optional: Add a background color to enhance visibility of designs */
 }
 
 .controls {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 30px;
   margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0); /* Optional: Add a background color for better button visibility */
+  padding: px;
+  border-radius: 5px;
 }
 
 .design-options {
@@ -23,7 +43,37 @@
 }
 
 .design-item {
-  border: 1px solid black;
+  border: 3px solid rgb(155, 95, 95);
   padding: 10px;
   cursor: pointer;
 }
+/* App.css */
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.button-primary {
+  background-color: rgb(217, 171, 171);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border-radius: 10px;
+  padding: px;
+
+}
+
+.button-secondary {
+  background-color: green;
+  color: white;
+}
+
+.design-header {
+    text-align: center;
+    color: #e09d9d;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+  }
