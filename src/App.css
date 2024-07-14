@@ -5,14 +5,14 @@ body {
   align-items: center;
   margin: 0;
   padding: 0;
-  background: url('images/background_image2.jpg') no-repeat center center fixed;
+  background: url('images/background_image5.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
 /* Existing styles */
 .App {
   text-align: center;
-  color:#e09d9d;
+  color: #e09d9d;
   font-family: "Times New Roman", Times, serif;
 }
 
@@ -23,7 +23,11 @@ body {
   width: 900px;
   margin: 20px;
   position: relative;
-  background-color: rgb(253, 252, 252); /* Optional: Add a background color to enhance visibility of designs */
+  background-color: rgb(253, 252, 252);
+  overflow: hidden;
+  display: flex; /* Ensure children are positioned correctly */
+  align-items: start; /* Optional: Adjust as needed */
+  justify-content: start; /* Optional: Adjust as needed */
 }
 
 .controls {
@@ -32,13 +36,13 @@ body {
   gap: 30px;
   margin-bottom: 20px;
   background-color: rgba(255, 255, 255, 0); /* Optional: Add a background color for better button visibility */
-  padding: px;
+  padding: 10px;
   border-radius: 5px;
 }
 
 .design-options {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   gap: 10px;
 }
 
@@ -47,7 +51,6 @@ body {
   padding: 10px;
   cursor: pointer;
 }
-/* App.css */
 
 .button {
   padding: 10px 20px;
@@ -61,8 +64,7 @@ body {
   color: rgb(255, 255, 255);
   font-weight: bold;
   border-radius: 10px;
-  padding: px;
-
+  padding: 10px 20px;
 }
 
 .button-secondary {
@@ -71,9 +73,14 @@ body {
 }
 
 .design-header {
-    text-align: center;
-    color: #e09d9d;
-    font-size: 17px;
-    font-weight: bold;
-    font-family: "Times New Roman", Times, serif;
-  }
+  text-align: center;
+  color: #e09d9d;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+}
+/* Styling for WebKit browsers (Chrome, Safari, Edge) */
+.search-input::-webkit-input-placeholder {
+  color: rgb(247, 245, 245); /* Change to desired color */
+}
+

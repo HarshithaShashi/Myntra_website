@@ -4,6 +4,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import DesignArea from './DesignArea';
 import DesignItem from './DesignItem';
 import './App.css';
+import html2canvas from 'html2canvas';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,13 +20,21 @@ function App() {
   };
 
   const handleDownload = () => {
-    console.log('Downloading design');
+    const designArea = document.querySelector('.design-area');
+    if (designArea) {
+      html2canvas(designArea).then((canvas) => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'design.png';
+        link.click();
+      });
+    }
   };
 
   const addDesign = (item) => {
     if (designs.length < 6) { // Check if less than 6 designs
       setHistory([...history, designs]); // Save current state to history
-      setDesigns([...designs, { ...item, id: Date.now() }]);
+      setDesigns([...designs, { ...item, id: Date.now(), left: 0, top: 0 }]);
     } else {
       alert('You can only add up to 6 designs.');
     }
@@ -40,10 +49,40 @@ function App() {
   };
 
   const designOptions = [
+    { type: '2D', src: 'images/file.png' },
+    { type: '2D', src: 'images/im1.png' },
+    { type: '2D', src: 'images/image1.png' },
+    { type: '2D', src: 'images/image2.png' },
+    { type: '2D', src: 'images/image3.png' },
+    { type: '2D', src: 'images/image4.png' },
+    { type: '2D', src: 'images/image5.png' },
+    { type: '2D', src: 'images/image6.png' },
+    { type: '2D', src: 'images/image7.png' },
+    { type: '2D', src: 'images/image8.png' },
+    { type: '2D', src: 'images/image9.png' },
+    { type: '2D', src: 'images/image10.png' },
+    { type: '2D', src: 'images/image11.png' },
+    { type: '2D', src: 'images/image12.png' },
+    { type: '2D', src: 'images/image13.png' },
+    { type: '2D', src: 'images/image14.png' },
+    { type: '2D', src: 'images/image15.png' },
+    { type: '2D', src: 'images/image16.png' },
+    { type: '2D', src: 'images/image17.png' },
+    { type: '2D', src: 'images/image18.png' },
+    { type: '2D', src: 'images/image19.png' },
+    { type: '2D', src: 'images/image20.png' },
+    { type: '2D', src: 'images/image21.png' },
+    { type: '2D', src: 'images/image22.png' },
+    { type: '2D', src: 'images/image23.png' },
+    { type: '2D', src: 'images/image24.png' },
+    { type: '2D', src: 'images/image25.png' },
+    { type: '2D', src: 'images/image26.png' },
+    { type: '2D', src: 'images/image27.png' },
+    { type: '2D', src: 'images/image28.png' },
+    { type: '2D', src: 'images/image29.png' },
+    { type: '2D', src: 'images/image30.png' },
     { type: '2D', src: 'images/a1.png' },
-    { type: '2D', src: 'images/a2.png' },
-    { type: '2D', src: 'images/a3.png' },
-    { type: '2D', src: 'images/a4.png' },
+    { type: '2D', src: 'images/b1.png' },
   ];
 
   return (
@@ -58,8 +97,8 @@ function App() {
             <button className="button button-primary" onClick={handleUndo}>Back</button>
             <input 
               type="text" 
-              placeholder="Search bar" 
-              className="button button-primary"
+              placeholder="Search bar"
+              className="button button-primary search-input"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -78,4 +117,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

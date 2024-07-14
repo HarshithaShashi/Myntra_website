@@ -4,7 +4,7 @@ import { useDrag } from 'react-dnd';
 function DesignItem({ item, addDesign }) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'designItem',
-    item: { type: item.type, src: item.src },
+    item: { id: Date.now(), type: item.type, src: item.src }, // Ensure each item has a unique id
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -14,10 +14,10 @@ function DesignItem({ item, addDesign }) {
     <div
       ref={drag}
       className="design-item"
-      style={{ opacity: isDragging ? 0.8 : 1 }}
+      style={{ opacity: isDragging ? 0.5 : 1 }}
       onClick={() => addDesign(item)}
     >
-      <img src={item.src} alt={item.type} style={{ width: '80px', height: '80px' }} />
+      <img src={item.src} alt={item.type} style={{ width: '110px', height: '110px' }} />
     </div>
   );
 }
