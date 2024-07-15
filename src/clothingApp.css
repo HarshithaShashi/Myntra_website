@@ -1,0 +1,112 @@
+/* Example styles */
+/* clothingApp.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f400; /* Optional: Adjust the background color */
+  }
+  
+  .top-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logo {
+    text-align: center;
+  }
+  
+  .style-buttons {
+    margin-top: 10px; /* Adjust spacing between the logo and buttons */
+  }
+  
+  .style-buttons button {
+    margin: 5px; /* Adjust spacing between buttons */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d9abab; /* Optional: Adjust button color */
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+  
+  .style-buttons button:hover {
+    background-color: #c69494; /* Optional: Adjust button hover color */
+  }
+  
+  .outfit-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust spacing between cards */
+    padding: 20px;
+  }
+  
+  .outfit-card {
+    border: 1px solid #e1aaaa; /* Optional: Adjust card border color */
+    border-radius: 10px;
+    overflow: hidden;
+    width: 200px; /* Adjust card width */
+    text-align: center;
+  }
+  
+  .outfit-username {
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .outfit-card-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+  }
+  
+  .outfit-card-footer button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  

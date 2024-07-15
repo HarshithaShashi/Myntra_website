@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { Route, Routes, Link, useNavigate } from 'react-router-dom';
 import DesignArea from './DesignArea';
 import DesignItem from './DesignItem';
+import ClothingApp from './clothingApp';
 import './App.css';
 import html2canvas from 'html2canvas';
 
@@ -10,13 +12,14 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [designs, setDesigns] = useState([]);
   const [history, setHistory] = useState([]); // Stack to keep track of history
+  const navigate = useNavigate(); // Initialize the navigate hook
 
   const handleSearch = () => {
     console.log('Searching for:', searchQuery);
   };
 
   const handleUpload = () => {
-    console.log('Uploading design');
+    navigate('/clothing-app'); // Navigate to ClothingApp route
   };
 
   const handleDownload = () => {
@@ -90,28 +93,36 @@ function App() {
       <div className="App">
         <header>
           <h1>Make your Design</h1>
+          <nav>
+            <Link to="/">Home</Link>
+          </nav>
         </header>
-        <main>
-          <DesignArea designs={designs} setDesigns={setDesigns} />
-          <div className="controls">
-            <button className="button button-primary" onClick={handleUndo}>Back</button>
-            <input 
-              type="text" 
-              placeholder="Search bar"
-              className="button button-primary search-input"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button className="button button-primary" onClick={handleSearch} >Search</button>
-            <button className="button button-primary" onClick={handleDownload}>Download</button>
-            <button className="button button-primary" onClick={handleUpload}>Upload</button>
-          </div>
-          <div className="design-options">
-            {designOptions.map((item, index) => (
-              <DesignItem key={index} item={item} addDesign={addDesign} />
-            ))}
-          </div>
-        </main>
+        <Routes>
+          <Route path="/" element={
+            <main>
+              <DesignArea designs={designs} setDesigns={setDesigns} />
+              <div className="controls">
+                <button className="button button-primary" onClick={handleUndo}>Back</button>
+                <input 
+                  type="text" 
+                  placeholder="Search bar"
+                  className="button button-primary search-input"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button className="button button-primary" onClick={handleSearch}>Search</button>
+                <button className="button button-primary" onClick={handleDownload}>Download</button>
+                <button className="button button-primary" onClick={handleUpload}>Upload</button>
+              </div>
+              <div className="design-options">
+                {designOptions.map((item, index) => (
+                  <DesignItem key={index} item={item} addDesign={addDesign} />
+                ))}
+              </div>
+            </main>
+          } />
+          <Route path="/clothing-app" element={<ClothingApp />} />
+        </Routes>
       </div>
     </DndProvider>
   );
