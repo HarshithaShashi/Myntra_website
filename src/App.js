@@ -6,12 +6,14 @@ import styled from 'styled-components';
 import DesignArea from './DesignArea';
 import DesignItem from './DesignItem';
 import ClothingApp from './clothingApp';
+import OutfitSwiper from './OutfitSwiper'
 import './App.css';
 import html2canvas from 'html2canvas';
 
 // Styled button for Home link
 const HomeButton = styled(Link)`
   padding: 10px 20px;
+  margin: 20px;
   background-color: #d9abab;
   color: white;
   text-decoration: none;
@@ -112,6 +114,7 @@ function App() {
         <header>
           <nav>
             <HomeButton to="/">Home</HomeButton>
+            <HomeButton to="/swipe">Swipe</HomeButton>
           </nav>
         </header>
         <Routes>
@@ -140,6 +143,7 @@ function App() {
             </main>
           } />
           <Route path="/clothing-app" element={<ClothingApp />} />
+          <Route path="/swipe" element={<OutfitSwiper />} />
         </Routes>
       </div>
     </DndProvider>
