@@ -2,11 +2,29 @@ import React, { useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Route, Routes, Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import DesignArea from './DesignArea';
 import DesignItem from './DesignItem';
 import ClothingApp from './clothingApp';
 import './App.css';
 import html2canvas from 'html2canvas';
+
+// Styled button for Home link
+const HomeButton = styled(Link)`
+  padding: 10px 20px;
+  background-color: #d9abab;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -92,9 +110,8 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <div className="App">
         <header>
-          
           <nav>
-            <Link to="/">Home</Link>
+            <HomeButton to="/">Home</HomeButton>
           </nav>
         </header>
         <Routes>
