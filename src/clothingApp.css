@@ -41,19 +41,32 @@ body {
   .style-buttons button:hover {
     background-color: #c69494; /* Optional: Adjust button hover color */
   }
-  
-  .outfit-grid {
+  /* clothingApp.css */
+
+/* ... (existing styles) ... */
+
+.outfit-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Adjust spacing between cards */
+    justify-content: center; /* Center the cards horizontally */
+    gap: 10px; /* Adjust spacing between cards */
     padding: 20px;
+}
+
+/* ... (existing styles) ... */
+.outfit-card img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
   }
-  
+
   .outfit-card {
+
     border: 1px solid #e1aaaa; /* Optional: Adjust card border color */
     border-radius: 10px;
     overflow: hidden;
-    width: 200px; /* Adjust card width */
+    height: 800px;
+    width: 500px; /* Adjust card width */
     text-align: center;
   }
   

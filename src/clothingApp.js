@@ -17,7 +17,7 @@ const outfits = [
     { id: 11, style: 'beaches', image: 'images/outfit11.jpg', creator: 'User11' },
     { id: 12, style: 'beaches', image: 'images/outfit12.jpg', creator: 'User12' },
     { id: 13, style: 'casuals', image: 'images/outfit13.jpg', creator: 'User13' },
-    { id: 14, style: 'casuals', image: 'images/outfit14.jpg', creator: 'User14' },
+    { id: 14, style: 'casuals', image: 'images/outfitsp.jpg', creator: 'User14' },
     { id: 15, style: 'casuals', image: 'images/outfit15.jpg', creator: 'User15' },
     { id: 16, style: 'casuals', image: 'images/outfit16.jpg', creator: 'User16' }
 ];

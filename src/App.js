@@ -92,7 +92,7 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <div className="App">
         <header>
-          <h1>Make your Design</h1>
+          
           <nav>
             <Link to="/">Home</Link>
           </nav>
@@ -100,6 +100,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <main>
+              <h1>Make your Design</h1>
               <DesignArea designs={designs} setDesigns={setDesigns} />
               <div className="controls">
                 <button className="button button-primary" onClick={handleUndo}>Back</button>
