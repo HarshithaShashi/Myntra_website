@@ -1,5 +1,7 @@
 import React from 'react';
 import { useDrag } from 'react-dnd';
+import { ResizableBox } from 'react-resizable';
+import 'react-resizable/css/styles.css';
 
 function DesignElement({ design, setDesigns }) {
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -24,9 +26,21 @@ function DesignElement({ design, setDesigns }) {
     setDesigns((prevDesigns) => prevDesigns.filter((d) => d.id !== design.id));
   };
 
+  const handleResize = (e, { size }) => {
+    setDesigns((prevDesigns) =>
+      prevDesigns.map((d) =>
+        d.id === design.id ? { ...d, width: size.width, height: size.height } : d
+      )
+    );
+  };
+
   return (
-    <div
-      ref={drag}
+    <ResizableBox
+      width={design.width || 120}
+      height={design.height || 120}
+      onResize={handleResize}
+      minConstraints={[50, 50]}
+      maxConstraints={[500, 500]}
       style={{
         position: 'absolute',
         left: design.left,
@@ -34,10 +48,15 @@ function DesignElement({ design, setDesigns }) {
         opacity: isDragging ? 0.5 : 1,
         cursor: 'move',
       }}
-      onDoubleClick={handleDoubleClick}
     >
-      <img src={design.src} alt={design.type} style={{ width: '120px', height: '120px' }} />
-    </div>
+      <div
+        ref={drag}
+        onDoubleClick={handleDoubleClick}
+        style={{ width: '100%', height: '100%' }}
+      >
+        <img src={design.src} alt={design.type} style={{ width: '100%', height: '100%' }} />
+      </div>
+    </ResizableBox>
   );
 }
 
